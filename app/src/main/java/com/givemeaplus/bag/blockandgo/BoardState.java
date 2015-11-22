@@ -52,7 +52,7 @@ public class BoardState {
 
     public static void setBlock(int i, int j){
 
-//        getBlock();//È¤½Ã block¹è¿­ÀÌ ¾øÀ¸¸é ¸¸µé¾îÁØ´Ù.
+//        getBlock();//í˜¹ì‹œ blockë°°ì—´ì´ ì—†ìœ¼ë©´ ë§Œë“¤ì–´ì¤€ë‹¤.
 
         block[i][j]+=1;
     }
@@ -60,7 +60,7 @@ public class BoardState {
 
     public static void setWall_h(int i, int j){
 
-//        getWall_h();//È¤½Ã wall_h¹è¿­ÀÌ ¾øÀ¸¸é ¸¸µé¾îÁØ´Ù.
+//        getWall_h();//í˜¹ì‹œ wall_hë°°ì—´ì´ ì—†ìœ¼ë©´ ë§Œë“¤ì–´ì¤€ë‹¤.
 
         wall_h[i][j]=1;
     }
@@ -68,7 +68,7 @@ public class BoardState {
 
     public static void setWall_v(int i, int j){
 
-//        getWall_v();//È¤½Ã wall_v¹è¿­ÀÌ ¾øÀ¸¸é ¸¸µé¾îÁØ´Ù.
+//        getWall_v();//í˜¹ì‹œ wall_vë°°ì—´ì´ ì—†ìœ¼ë©´ ë§Œë“¤ì–´ì¤€ë‹¤.
 
         wall_v[i][j]=1;
     }
