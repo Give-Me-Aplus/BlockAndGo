@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+
+    //송지원 주석
     LinearLayout parentLayout;
     View[] childViews;
 
