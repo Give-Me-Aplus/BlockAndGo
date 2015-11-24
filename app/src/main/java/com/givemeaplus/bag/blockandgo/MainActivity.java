@@ -11,9 +11,10 @@ import android.widget.LinearLayout;
 public class MainActivity extends Activity implements View.OnClickListener {
 
 
-    //송지원 주석
     LinearLayout parentLayout;
     View[] childViews;
+
+    BoardState mBoardState;
 
     //Singleton singleton;
 
@@ -25,26 +26,56 @@ public class MainActivity extends Activity implements View.OnClickListener {
         parentLayout = (LinearLayout)findViewById(R.id.parent_layout);
         setOnClickListener(parentLayout);
 
-        //singleton = Singleton.getInstance();
+        mBoardState = BoardState.getInstance();
 
-
+        mBoardState.showBlock();
     }
 
 
     private void setOnClickListener(ViewGroup viewGroup){
 
-        View[] childViews = getChildViews(viewGroup);
+        childViews = getChildViews(viewGroup);
 
         for(int i=0; i<childViews.length; i++){
 
-            if(childViews[i] instanceof Button){
+            if(childViews[i].getTag() != null) {
+                String tag = childViews[i].getTag().toString();
 
-                childViews[i].setOnClickListener(this);
-            } else if(childViews[i] instanceof ViewGroup){
-
-                setOnClickListener((ViewGroup) childViews[i]);
+                if (tag.contains("block") || tag.contains("wall") || tag.contains("btn"))
+                    childViews[i].setOnClickListener(this);
             }
+//            if(childViews[i] instanceof Button)
+//                childViews[i].setOnClickListener(this);
+//            else if(childViews[i] instanceof ViewGroup)
+//                setOnClickListener((ViewGroup) childViews[i]);
         }
+    }
+
+    public void onClickBlock(View v){
+
+        String id_index = v.getTag().toString();
+        int index;
+
+        id_index = id_index.replace("block","");
+        index = Integer.parseInt(id_index);
+        int i = index/10;
+        int j = index%10;
+
+        System.out.println(i+" "+j);
+
+        mBoardState.setBlock(i, j, true);
+    }
+
+    public void onClickWall_h(View v){
+        String id_index = v.getTag().toString();
+        int index;
+
+        id_index = id_index.replace("wall_h","");
+        index = Integer.parseInt(id_index);
+        int i = index/10;
+        int j = index%10;
+
+        mBoardState.setWall_h(i, j, true);
     }
 
 
@@ -65,6 +96,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
 
         String id_index;
+        int index;
 
         if(v.getTag() != null) {
             id_index = v.getTag().toString();
@@ -72,32 +104,32 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             if(id_index.contains("block")){
 
-                id_index = id_index.replace("block", "");
-                int i = Integer.parseInt(id_index.subSequence(0,1).toString());
-                int j = Integer.parseInt(id_index.subSequence(1,2).toString());
-                Log.d("dSJW", id_index);
-                //Singleton.setBlock(i, j);
-                //Singleton.showBlock();
+                index = Integer.parseInt(id_index);
+                int i = index/10;
+                int j = index%10;
+
+                mBoardState.setBlock(i, j, true);
+
             }
             else if(id_index.contains("wall_h")){
 
-                id_index = id_index.replace("wall_h", "");
-                int i = Integer.parseInt(id_index.subSequence(0,1).toString());
-                int j = Integer.parseInt(id_index.subSequence(1,2).toString());
+                index = Integer.parseInt(id_index);
+                int i = index/10;
+                int j = index%10;
 
-                BoardState.setWall_h(i, j);
-                BoardState.showWall_h();
+                mBoardState.setWall_h(i, j, true);
             }
             else if(id_index.contains("wall_v")){
 
-                id_index = id_index.replace("wall_v", "");
-                int i = Integer.parseInt(id_index.subSequence(0,1).toString());
-                int j = Integer.parseInt(id_index.subSequence(1,2).toString());
+                index = Integer.parseInt(id_index);
+                int i = index/10;
+                int j = index%10;
 
-                BoardState.setWall_v(i, j);
-                BoardState.showWall_v();
+                mBoardState.setWall_v(i, j, true);
             }
         }
+
+        mBoardState.showBlock();
 
     }
 

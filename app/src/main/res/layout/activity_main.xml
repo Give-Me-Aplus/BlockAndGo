@@ -5,8 +5,10 @@
     android:padding="10dp"
     tools:context=".MainActivity"
     android:background="#ffffff"
-    android:orientation="vertical"
-    android:id="@+id/parent_layout">
+    android:orientation="vertical">
+
+
+    <!-- enemy information-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,6 +86,9 @@
     </LinearLayout>
 
 
+
+    <!-- board -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -94,6 +99,7 @@
 
 
         <LinearLayout
+            android:id="@+id/parent_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -110,6 +116,7 @@
                 <Button android:tag="block00"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_blue"/>
                 <Button android:tag="wall_v00"
                     android:background="@color/wall_blank"
@@ -121,6 +128,7 @@
                 <Button android:tag="block01"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_blue"/>
                 <Button android:tag="wall_v01"
                     android:layout_width="8dp"
@@ -132,6 +140,7 @@
                 <Button android:tag="block02"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_blue"/>
                 <Button android:tag="wall_v02"
                     android:layout_width="8dp"
@@ -143,6 +152,7 @@
                 <Button android:tag="block03"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_blue"/>
                 <Button android:tag="wall_v03"
                     android:layout_width="8dp"
@@ -154,6 +164,7 @@
                 <Button android:tag="block04"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_blue"/>
                 <Button android:tag="wall_v04"
                     android:layout_width="8dp"
@@ -165,6 +176,7 @@
                 <Button android:tag="block05"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_blue"/>
                 <Button android:tag="wall_v05"
                     android:layout_width="8dp"
@@ -176,6 +188,7 @@
                 <Button android:tag="block06"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_blue"/>
 
             </LinearLayout>
@@ -189,6 +202,7 @@
                 <Button android:tag="wall_h00"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -197,6 +211,7 @@
                 <Button android:tag="wall_h01"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -205,6 +220,7 @@
                 <Button android:tag="wall_h02"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -213,6 +229,7 @@
                 <Button android:tag="wall_h03"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -221,6 +238,7 @@
                 <Button android:tag="wall_h04"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -229,6 +247,7 @@
                 <Button android:tag="wall_h05"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -237,6 +256,7 @@
                 <Button android:tag="wall_h06"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -254,6 +274,7 @@
                 <Button android:tag="block10"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v10"
                     android:background="@color/wall_blank"
@@ -265,6 +286,7 @@
                 <Button android:tag="block11"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v11"
                     android:layout_width="8dp"
@@ -276,6 +298,7 @@
                 <Button android:tag="block12"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v12"
                     android:layout_width="8dp"
@@ -287,6 +310,7 @@
                 <Button android:tag="block13"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v13"
                     android:layout_width="8dp"
@@ -298,6 +322,7 @@
                 <Button android:tag="block14"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v14"
                     android:layout_width="8dp"
@@ -309,6 +334,7 @@
                 <Button android:tag="block15"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v15"
                     android:layout_width="8dp"
@@ -320,6 +346,7 @@
                 <Button android:tag="block16"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -333,6 +360,7 @@
                 <Button android:tag="wall_h10"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -341,6 +369,7 @@
                 <Button android:tag="wall_h11"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -349,6 +378,7 @@
                 <Button android:tag="wall_h12"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -357,6 +387,7 @@
                 <Button android:tag="wall_h13"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -365,6 +396,7 @@
                 <Button android:tag="wall_h14"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -373,6 +405,7 @@
                 <Button android:tag="wall_h16"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -381,6 +414,7 @@
                 <Button android:tag="wall_h16"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -398,6 +432,7 @@
                 <Button android:tag="block20"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v20"
                     android:background="@color/wall_blank"
@@ -409,6 +444,7 @@
                 <Button android:tag="block21"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v21"
                     android:layout_width="8dp"
@@ -420,6 +456,7 @@
                 <Button android:tag="block22"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v22"
                     android:layout_width="8dp"
@@ -431,6 +468,7 @@
                 <Button android:tag="block23"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v23"
                     android:layout_width="8dp"
@@ -442,6 +480,7 @@
                 <Button android:tag="block24"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v24"
                     android:layout_width="8dp"
@@ -453,6 +492,7 @@
                 <Button android:tag="block25"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v25"
                     android:layout_width="8dp"
@@ -464,6 +504,7 @@
                 <Button android:tag="block26"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -477,6 +518,7 @@
                 <Button android:tag="wall_h20"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -485,6 +527,7 @@
                 <Button android:tag="wall_h21"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -493,6 +536,7 @@
                 <Button android:tag="wall_h22"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -501,6 +545,7 @@
                 <Button android:tag="wall_h23"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -509,6 +554,7 @@
                 <Button android:tag="wall_h24"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -517,6 +563,7 @@
                 <Button android:tag="wall_h25"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -525,6 +572,7 @@
                 <Button android:tag="wall_h26"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -542,6 +590,7 @@
                 <Button android:tag="block30"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v30"
                     android:background="@color/wall_blank"
@@ -553,6 +602,7 @@
                 <Button android:tag="block31"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v32"
                     android:layout_width="8dp"
@@ -564,6 +614,7 @@
                 <Button android:tag="block32"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v32"
                     android:layout_width="8dp"
@@ -575,6 +626,7 @@
                 <Button android:tag="block33"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v33"
                     android:layout_width="8dp"
@@ -586,6 +638,7 @@
                 <Button android:tag="block34"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v34"
                     android:layout_width="8dp"
@@ -597,6 +650,7 @@
                 <Button android:tag="block35"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v35"
                     android:layout_width="8dp"
@@ -608,6 +662,7 @@
                 <Button android:tag="block36"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -621,6 +676,7 @@
                 <Button android:tag="wall_h30"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -629,6 +685,7 @@
                 <Button android:tag="wall_h31"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -637,6 +694,7 @@
                 <Button android:tag="wall_h32"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -645,6 +703,7 @@
                 <Button android:tag="wall_h33"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -653,6 +712,7 @@
                 <Button android:tag="wall_h34"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -661,6 +721,7 @@
                 <Button android:tag="wall_h35"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -669,6 +730,7 @@
                 <Button android:tag="wall_h36"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -686,6 +748,7 @@
                 <Button android:tag="block40"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v40"
                     android:background="@color/wall_blank"
@@ -697,6 +760,7 @@
                 <Button android:tag="block41"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v41"
                     android:layout_width="8dp"
@@ -708,6 +772,7 @@
                 <Button android:tag="block42"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v42"
                     android:layout_width="8dp"
@@ -719,6 +784,7 @@
                 <Button android:tag="block43"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v43"
                     android:layout_width="8dp"
@@ -730,6 +796,7 @@
                 <Button android:tag="block44"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v44"
                     android:layout_width="8dp"
@@ -741,6 +808,7 @@
                 <Button android:tag="block45"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v45"
                     android:layout_width="8dp"
@@ -752,6 +820,7 @@
                 <Button android:tag="block46"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -765,6 +834,7 @@
                 <Button android:tag="wall_h40"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -773,6 +843,7 @@
                 <Button android:tag="wall_h41"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -781,6 +852,7 @@
                 <Button android:tag="wall_h42"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -789,6 +861,7 @@
                 <Button android:tag="wall_h43"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -797,6 +870,7 @@
                 <Button android:tag="wall_h44"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -805,6 +879,7 @@
                 <Button android:tag="wall_h45"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -813,6 +888,7 @@
                 <Button android:tag="wall_h46"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -830,6 +906,7 @@
                 <Button android:tag="block50"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v50"
                     android:background="@color/wall_blank"
@@ -841,6 +918,7 @@
                 <Button android:tag="block51"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v51"
                     android:layout_width="8dp"
@@ -852,6 +930,7 @@
                 <Button android:tag="block52"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v52"
                     android:layout_width="8dp"
@@ -863,6 +942,7 @@
                 <Button android:tag="block53"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v53"
                     android:layout_width="8dp"
@@ -874,6 +954,7 @@
                 <Button android:tag="block54"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v54"
                     android:layout_width="8dp"
@@ -885,6 +966,7 @@
                 <Button android:tag="block55"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v55"
                     android:layout_width="8dp"
@@ -896,6 +978,7 @@
                 <Button android:tag="block56"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -909,6 +992,7 @@
                 <Button android:tag="wall_h50"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -917,6 +1001,7 @@
                 <Button android:tag="wall_h51"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -925,6 +1010,7 @@
                 <Button android:tag="wall_h52"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -933,6 +1019,7 @@
                 <Button android:tag="wall_h53"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -941,6 +1028,7 @@
                 <Button android:tag="wall_h54"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -949,6 +1037,7 @@
                 <Button android:tag="wall_h55"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -957,6 +1046,7 @@
                 <Button android:tag="wall_h56"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -974,6 +1064,7 @@
                 <Button android:tag="block60"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v60"
                     android:background="@color/wall_blank"
@@ -985,6 +1076,7 @@
                 <Button android:tag="block61"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v61"
                     android:layout_width="8dp"
@@ -996,6 +1088,7 @@
                 <Button android:tag="block62"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v62"
                     android:layout_width="8dp"
@@ -1007,6 +1100,7 @@
                 <Button android:tag="block63"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v63"
                     android:layout_width="8dp"
@@ -1018,6 +1112,7 @@
                 <Button android:tag="block64"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v64"
                     android:layout_width="8dp"
@@ -1029,6 +1124,7 @@
                 <Button android:tag="block65"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v65"
                     android:layout_width="8dp"
@@ -1040,6 +1136,7 @@
                 <Button android:tag="block66"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -1053,6 +1150,7 @@
                 <Button android:tag="wall_h60"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1061,6 +1159,7 @@
                 <Button android:tag="wall_h61"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1069,6 +1168,7 @@
                 <Button android:tag="wall_h62"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1077,6 +1177,7 @@
                 <Button android:tag="wall_h63"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1085,6 +1186,7 @@
                 <Button android:tag="wall_h64"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1093,6 +1195,7 @@
                 <Button android:tag="wall_h65"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1101,6 +1204,7 @@
                 <Button android:tag="wall_h66"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -1118,6 +1222,7 @@
                 <Button android:tag="block70"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v70"
                     android:background="@color/wall_blank"
@@ -1129,6 +1234,7 @@
                 <Button android:tag="block71"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v71"
                     android:layout_width="8dp"
@@ -1140,6 +1246,7 @@
                 <Button android:tag="block72"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v72"
                     android:layout_width="8dp"
@@ -1151,6 +1258,7 @@
                 <Button android:tag="block73"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v73"
                     android:layout_width="8dp"
@@ -1162,6 +1270,7 @@
                 <Button android:tag="block74"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v74"
                     android:layout_width="8dp"
@@ -1173,6 +1282,7 @@
                 <Button android:tag="block75"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v75"
                     android:layout_width="8dp"
@@ -1184,6 +1294,7 @@
                 <Button android:tag="block76"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -1197,6 +1308,7 @@
                 <Button android:tag="wall_h70"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1205,6 +1317,7 @@
                 <Button android:tag="wall_h71"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1213,6 +1326,7 @@
                 <Button android:tag="wall_h72"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1221,6 +1335,7 @@
                 <Button android:tag="wall_h73"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1229,6 +1344,7 @@
                 <Button android:tag="wall_h74"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1237,6 +1353,7 @@
                 <Button android:tag="wall_h75"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1245,6 +1362,7 @@
                 <Button android:tag="wall_h76"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -1262,6 +1380,7 @@
                 <Button android:tag="block80"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v80"
                     android:background="@color/wall_blank"
@@ -1273,6 +1392,7 @@
                 <Button android:tag="block81"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v81"
                     android:layout_width="8dp"
@@ -1284,6 +1404,7 @@
                 <Button android:tag="block82"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v82"
                     android:layout_width="8dp"
@@ -1295,6 +1416,7 @@
                 <Button android:tag="block83"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v83"
                     android:layout_width="8dp"
@@ -1306,6 +1428,7 @@
                 <Button android:tag="block84"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v84"
                     android:layout_width="8dp"
@@ -1317,6 +1440,7 @@
                 <Button android:tag="block85"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v85"
                     android:layout_width="8dp"
@@ -1328,6 +1452,7 @@
                 <Button android:tag="block86"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -1341,6 +1466,7 @@
                 <Button android:tag="wall_h80"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1349,6 +1475,7 @@
                 <Button android:tag="wall_h81"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1357,6 +1484,7 @@
                 <Button android:tag="wall_h82"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1365,6 +1493,7 @@
                 <Button android:tag="wall_h83"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1373,6 +1502,7 @@
                 <Button android:tag="wall_h84"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1381,6 +1511,7 @@
                 <Button android:tag="wall_h85"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1389,6 +1520,7 @@
                 <Button android:tag="wall_h86"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -1406,6 +1538,7 @@
                 <Button android:tag="block90"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v90"
                     android:background="@color/wall_blank"
@@ -1417,6 +1550,7 @@
                 <Button android:tag="block91"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v91"
                     android:layout_width="8dp"
@@ -1428,6 +1562,7 @@
                 <Button android:tag="block92"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v92"
                     android:layout_width="8dp"
@@ -1439,6 +1574,7 @@
                 <Button android:tag="block93"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v93"
                     android:layout_width="8dp"
@@ -1450,6 +1586,7 @@
                 <Button android:tag="block94"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v94"
                     android:layout_width="8dp"
@@ -1461,6 +1598,7 @@
                 <Button android:tag="block95"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v95"
                     android:layout_width="8dp"
@@ -1472,6 +1610,7 @@
                 <Button android:tag="block96"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
 
             </LinearLayout>
@@ -1485,6 +1624,7 @@
                 <Button android:tag="wall_h90"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1493,6 +1633,7 @@
                 <Button android:tag="wall_h91"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1501,6 +1642,7 @@
                 <Button android:tag="wall_h92"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1509,6 +1651,7 @@
                 <Button android:tag="wall_h93"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1517,6 +1660,7 @@
                 <Button android:tag="wall_h94"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1525,6 +1669,7 @@
                 <Button android:tag="wall_h95"
                     android:layout_width="34dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="2dp"
@@ -1533,6 +1678,7 @@
                 <Button android:tag="wall_h96"
                     android:layout_width="32dp"
                     android:layout_height="8dp"
+                    android:onClick="onClickWall_h"
                     android:background="@color/wall_blank"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"/>
@@ -1550,6 +1696,7 @@
                 <Button android:tag="block100"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_red"/>
                 <Button android:tag="wall_v100"
                     android:background="@color/wall_blank"
@@ -1561,6 +1708,7 @@
                 <Button android:tag="block101"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_red"/>
                 <Button android:tag="wall_v101"
                     android:layout_width="8dp"
@@ -1572,10 +1720,12 @@
                 <Button android:tag="block102"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_red"/>
                 <Button android:tag="wall_v102"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1583,6 +1733,7 @@
                 <Button android:tag="block103"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_red"/>
                 <Button android:tag="wall_v103"
                     android:layout_width="8dp"
@@ -1594,6 +1745,7 @@
                 <Button android:tag="block104"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_red"/>
                 <Button android:tag="wall_v104"
                     android:layout_width="8dp"
@@ -1605,6 +1757,7 @@
                 <Button android:tag="block105"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_red"/>
                 <Button android:tag="wall_v105"
                     android:layout_width="8dp"
@@ -1616,6 +1769,7 @@
                 <Button android:tag="block106"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickBlock"
                     android:background="@color/block_red"/>
 
             </LinearLayout>
@@ -1626,6 +1780,8 @@
 
     </ScrollView>
 
+
+    <!-- My play area -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -1747,7 +1903,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/clock"/>
 
-                <TextView
+                <TextView android:id="@+id/time_limit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -1762,19 +1918,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <Button
+                <Button android:tag="btn_move"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="8dp"
                     android:background="@drawable/btn_move_red"/>
 
-                <Button
+                <Button android:tag="btn_wall"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="8dp"
                     android:background="@drawable/btn_wall_red"/>
 
-                <Button
+                <Button android:tag="btn_item"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/btn_item_red"/>
