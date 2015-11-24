@@ -109,7 +109,7 @@ public class BoardState {
 
         for(i=0; i<11; i++){
 
-            Log.d("dSJW", "\t"+block[i][0] + "\t"+block[i][1] + "\t"+block[i][2] + "\t"+block[i][3] + "\t"+block[i][4] + "\t"+block[i][5] + "\t"+block[i][6] + "\n");
+            System.out.println(block[i][0] + "\t"+block[i][1] + "\t"+block[i][2] + "\t"+block[i][3] + "\t"+block[i][4] + "\t"+block[i][5] + "\t"+block[i][6]);
         }
     }
 

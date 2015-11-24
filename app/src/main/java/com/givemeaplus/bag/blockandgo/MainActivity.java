@@ -11,9 +11,16 @@ import android.widget.LinearLayout;
 public class MainActivity extends Activity implements View.OnClickListener {
 
 
-    //������ �ּ�
     LinearLayout parentLayout;
     View[] childViews;
+
+    BoardState mBoardState;
+
+    String[][] blockArr = new String[11][7];
+    String[][] wall_hArr = new String[10][7];
+    String[][] wall_vArr = new String[11][6];
+
+
 
     //Singleton singleton;
 
@@ -23,28 +30,102 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         parentLayout = (LinearLayout)findViewById(R.id.parent_layout);
-        setOnClickListener(parentLayout);
+//        setOnClickListener(parentLayout);
+        makeBtnArr(parentLayout);
 
-        //singleton = Singleton.getInstance();
+        mBoardState = BoardState.getInstance();
 
-
+        mBoardState.showBlock();
     }
 
+    private void makeBtnArr(ViewGroup viewGroup){//block과 wall_h
 
-    private void setOnClickListener(ViewGroup viewGroup){
-
-        View[] childViews = getChildViews(viewGroup);
+        childViews = getChildViews(viewGroup);
 
         for(int i=0; i<childViews.length; i++){
 
-            if(childViews[i] instanceof Button){
+            if(childViews[i].getTag() != null){
 
-                childViews[i].setOnClickListener(this);
-            } else if(childViews[i] instanceof ViewGroup){
+                String tag = childViews[i].getTag().toString().trim();
+                String tagTemp = tag;
+                int ii,ij;
 
-                setOnClickListener((ViewGroup) childViews[i]);
+                if(tagTemp.contains("block")){
+
+                    tagTemp.replace("block", "");
+                    int index = Integer.parseInt(tagTemp);
+
+                    ii = index/10;
+                    ij = index%10;
+
+                    blockArr[ii][ij] = tag;
+                }else if(tagTemp.contains("wall_h")){
+
+                    tagTemp.replace("wall_h", "");
+                    int index = Integer.parseInt(tagTemp);
+
+                    ii = index/10;
+                    ij = index%10;
+
+                    wall_hArr[ii][ij] = tag;
+                }else if(tagTemp.contains("wall_v")){
+
+                    tagTemp.replace("wall_v", "");
+                    int index = Integer.parseInt(tagTemp);
+
+                    ii = index/10;
+                    ij = index%10;
+
+                    wall_vArr[ii][ij] = tag;
+                }
             }
         }
+    }
+
+//    private void setOnClickListener(ViewGroup viewGroup){
+//
+//        childViews = getChildViews(viewGroup);
+//
+//        for(int i=0; i<childViews.length; i++){
+//
+//            if(childViews[i].getTag() != null) {
+//                String tag = childViews[i].getTag().toString();
+//
+//                if (tag.contains("block") || tag.contains("wall") || tag.contains("btn"))
+//                    childViews[i].setOnClickListener(this);
+//            }
+////            if(childViews[i] instanceof Button)
+////                childViews[i].setOnClickListener(this);
+////            else if(childViews[i] instanceof ViewGroup)
+////                setOnClickListener((ViewGroup) childViews[i]);
+//        }
+//    }
+
+    public void onClickBlock(View v){
+
+        String id_index = v.getTag().toString();
+        int index;
+
+        id_index = id_index.replace("block","");
+        index = Integer.parseInt(id_index);
+        int i = index/10;
+        int j = index%10;
+
+        System.out.println(i+" "+j);
+
+        mBoardState.setBlock(i, j, true);
+    }
+
+    public void onClickWall_h(View v){
+        String id_index = v.getTag().toString();
+        int index;
+
+        id_index = id_index.replace("wall_h","");
+        index = Integer.parseInt(id_index);
+        int i = index/10;
+        int j = index%10;
+
+        mBoardState.setWall_h(i, j, true);
     }
 
 
@@ -65,6 +146,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
 
         String id_index;
+        int index;
 
         if(v.getTag() != null) {
             id_index = v.getTag().toString();
@@ -72,32 +154,31 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             if(id_index.contains("block")){
 
-                id_index = id_index.replace("block", "");
-                int i = Integer.parseInt(id_index.subSequence(0,1).toString());
-                int j = Integer.parseInt(id_index.subSequence(1,2).toString());
-                Log.d("dSJW", id_index);
-                Singleton.setBlock(i, j);
-                Singleton.showBlock();
+                index = Integer.parseInt(id_index);
+                int i = index/10;
+                int j = index%10;
+
+                mBoardState.setBlock(i, j, true);
             }
             else if(id_index.contains("wall_h")){
 
-                id_index = id_index.replace("wall_h", "");
-                int i = Integer.parseInt(id_index.subSequence(0,1).toString());
-                int j = Integer.parseInt(id_index.subSequence(1,2).toString());
+                index = Integer.parseInt(id_index);
+                int i = index/10;
+                int j = index%10;
 
-                BoardState.setWall_h(i, j);
-                BoardState.showWall_h();
+                mBoardState.setWall_h(i, j, true);
             }
             else if(id_index.contains("wall_v")){
 
-                id_index = id_index.replace("wall_v", "");
-                int i = Integer.parseInt(id_index.subSequence(0,1).toString());
-                int j = Integer.parseInt(id_index.subSequence(1,2).toString());
+                index = Integer.parseInt(id_index);
+                int i = index/10;
+                int j = index%10;
 
-                BoardState.setWall_v(i, j);
-                BoardState.showWall_v();
+                mBoardState.setWall_v(i, j, true);
             }
         }
+
+        mBoardState.showBlock();
 
     }
 

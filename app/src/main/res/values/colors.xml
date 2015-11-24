@@ -6,6 +6,7 @@
     <color name="wall_red">#e67070</color>
     <color name="wall_blue">#70ade6</color>
     <color name="wall_blank">#ffffff</color>
+    <color name="wall_gray">#dfdfdf</color>
 
     <color name="block_blue">#adedff</color>
     <color name="block_red">#ffadad</color>
