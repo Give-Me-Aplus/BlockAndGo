@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="item_slot">#dedede</color>
+
+    <color name="wall_red">#e67070</color>
+    <color name="wall_blue">#70ade6</color>
+    <color name="wall_blank">#ffffff</color>
+
+    <color name="block_blue">#adedff</color>
+    <color name="block_red">#ffadad</color>
+    <color name="block_default">#c0c0c0</color>
+
+</resources>
