@@ -17,9 +17,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     Thread timer;
 
-
     BoardState mBoardState;
 
+    Button[][] blockArr = new Button[11][7];
+    Button[][] wall_hArr = new Button[10][7];
+    Button[][] wall_vArr = new Button[11][6];
+
+    PlayerInformation myPlayer;
+    PlayerInformation enemy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         parentLayout = (LinearLayout)findViewById(R.id.parent_layout);
-        setOnClickListener(parentLayout);
+        makeBtnArr(parentLayout);
 
         mBoardState = BoardState.getInstance();
 
@@ -38,25 +43,68 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         });
 
+        Button button = (Button)findViewById(R.id.block00);
+
+        button.setEnabled(false);
+//
+//        for(int i=0; i<11; i++)
+//            for(int j=0; j<7; j++)
+//                blockArr[i][j].setEnabled(false);
+
     }
 
-
-    private void setOnClickListener(ViewGroup viewGroup){
+    private void makeBtnArr(ViewGroup viewGroup){//block과 wall_h
 
         childViews = getChildViews(viewGroup);
 
+        System.out.println(childViews.length);
+
         for(int i=0; i<childViews.length; i++){
 
-            if(childViews[i].getTag() != null) {
-                String tag = childViews[i].getTag().toString();
+            if(childViews[i] instanceof ViewGroup){
 
-                if (tag.contains("block") || tag.contains("wall") || tag.contains("btn"))
-                    childViews[i].setOnClickListener(this);
+                makeBtnArr((ViewGroup)childViews[i]);
+
+            }else if(childViews[i] instanceof Button){
+
+                if(childViews[i].getTag() != null){
+
+                    String tagTemp = childViews[i].getTag().toString();
+
+                    System.out.println(tagTemp);
+
+                    int ii,ij;
+
+                    if(tagTemp.contains("block")){
+
+                        String tmp = tagTemp.replace("block", "");
+                        int index = Integer.parseInt(tmp);
+
+                        ii = index/10;
+                        ij = index%10;
+
+                        blockArr[ii][ij] = (Button)childViews[i];
+                    }else if(tagTemp.contains("wall_h")){
+
+                        String tmp = tagTemp.replace("wall_h", "");
+                        int index = Integer.parseInt(tmp);
+
+                        ii = index/10;
+                        ij = index%10;
+
+                        wall_hArr[ii][ij] = (Button)childViews[i];
+                    }else if(tagTemp.contains("wall_v")){
+
+                        String tmp = tagTemp.replace("wall_v", "");
+                        int index = Integer.parseInt(tmp);
+
+                        ii = index/10;
+                        ij = index%10;
+
+                        wall_vArr[ii][ij] = (Button)childViews[i];
+                    }
+                }
             }
-            if(childViews[i] instanceof Button)
-                childViews[i].setOnClickListener(this);
-            else if(childViews[i] instanceof ViewGroup)
-                setOnClickListener((ViewGroup) childViews[i]);
         }
     }
 
@@ -132,7 +180,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 int j = index%10;
 
                 mBoardState.setBlock(i, j, true);
-
             }
             else if(id_index.contains("wall_h")){
 

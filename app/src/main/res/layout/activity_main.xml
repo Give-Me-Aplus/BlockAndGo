@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".MainActivity"
+    android:id="@+id/parent_layout"
     android:background="#ffffff"
     android:orientation="vertical">
 
@@ -99,7 +100,6 @@
 
 
         <LinearLayout
-            android:id="@+id/parent_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -114,6 +114,7 @@
                 android:orientation="horizontal">
 
                 <Button android:tag="block00"
+                    android:id="@+id/block00"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:onClick="onClickBlock"
