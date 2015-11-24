@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 public class MainActivity extends Activity implements View.OnClickListener {
 
 
-    //¼ÛÁö¿ø ÁÖ¼®
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½
     LinearLayout parentLayout;
     View[] childViews;
 
@@ -76,8 +76,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 int i = Integer.parseInt(id_index.subSequence(0,1).toString());
                 int j = Integer.parseInt(id_index.subSequence(1,2).toString());
                 Log.d("dSJW", id_index);
-                //Singleton.setBlock(i, j);
-                //Singleton.showBlock();
+                Singleton.setBlock(i, j);
+                Singleton.showBlock();
             }
             else if(id_index.contains("wall_h")){
 
