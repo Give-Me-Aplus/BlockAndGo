@@ -8,15 +8,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+import java.util.logging.Handler;
 
+public class MainActivity extends Activity implements View.OnClickListener {
 
     LinearLayout parentLayout;
     View[] childViews;
 
+    Thread timer;
+
+
     BoardState mBoardState;
 
-    //Singleton singleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         mBoardState = BoardState.getInstance();
 
-        mBoardState.showBlock();
+        timer = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 1초 지날때마다 핸들러로 타이머 텍스트뷰 숫자 변경
+            }
+        });
+
     }
 
 
@@ -44,10 +53,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if (tag.contains("block") || tag.contains("wall") || tag.contains("btn"))
                     childViews[i].setOnClickListener(this);
             }
-//            if(childViews[i] instanceof Button)
-//                childViews[i].setOnClickListener(this);
-//            else if(childViews[i] instanceof ViewGroup)
-//                setOnClickListener((ViewGroup) childViews[i]);
+            if(childViews[i] instanceof Button)
+                childViews[i].setOnClickListener(this);
+            else if(childViews[i] instanceof ViewGroup)
+                setOnClickListener((ViewGroup) childViews[i]);
         }
     }
 
@@ -75,7 +84,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
         int i = index/10;
         int j = index%10;
 
+        System.out.println("wall_h "+i+" "+j);
         mBoardState.setWall_h(i, j, true);
+    }
+
+    public void onClickWall_v(View v){
+        String id_index = v.getTag().toString();
+        int index;
+
+        id_index = id_index.replace("wall_v", "");
+        index = Integer.parseInt(id_index);
+        int i = index/10;
+        int j = index%10;
+
+        System.out.println("wall_v "+i+" "+j);
+        mBoardState.setWall_v(i, j, true);
     }
 
 
