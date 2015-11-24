@@ -20,6 +20,11 @@ public class BoardState {
     private static BoardState mBoardState = null;
 
 
+    private static int[][] canGoToGoalPoint;
+
+
+
+
     public static BoardState getInstance(){
         if(mBoardState==null) mBoardState = new BoardState();
         return mBoardState;
@@ -37,6 +42,9 @@ public class BoardState {
         block = new int[11][7];
         wall_h = new int[10][7];
         wall_v = new int[11][6];
+
+
+        canGoToGoalPoint = new int[11][7];
     }
 
     public int[][] getBlock(){
@@ -121,7 +129,7 @@ public class BoardState {
 
         for(i=0; i<10; i++) {
 
-            Log.d("dSJW", "\t"+wall_h[i][0] + "\t"+wall_h[i][1] + "\t"+wall_h[i][2] + "\t"+wall_h[i][3] + "\t"+wall_h[i][4] + "\t"+wall_h[i][5] + "\t"+wall_h[i][6] + "\n");
+            Log.d("dSJW", "\t" + wall_h[i][0] + "\t" + wall_h[i][1] + "\t" + wall_h[i][2] + "\t" + wall_h[i][3] + "\t" + wall_h[i][4] + "\t" + wall_h[i][5] + "\t" + wall_h[i][6] + "\n");
         }
     }
 
@@ -136,5 +144,111 @@ public class BoardState {
 
             Log.d("dSJW", "\t"+wall_v[i][0] + "\t"+wall_v[i][1] + "\t"+wall_v[i][2] + "\t"+wall_v[i][3] + "\t"+wall_v[i][4] + "\t"+wall_v[i][5] + "\n");
         }
+    }
+
+
+    //wall로 경로를 막았을때 게임이 성립하는지 안하는지 체크하는 함수.
+    //wall을 놓기전 놓아도되는곳인가 체크하는데 사용.
+    //놓아도 괜찮으면 true 반환, 안되면 false 반환.
+    //canGoToGoalPoint배열을 사용하는데 canGoToGoalPoint[i][j]이 0이면 block[i][j]에서 GOAL지점까지 이동불가이고
+    //canGoToGoalPoint[i][j]이 1이면 block[i][j]에서 GOAL지점으로 이동할수있다.
+    //현재 자신의 말의 위치가 1이면 성립한다!
+    public void checkARoute(){
+
+        int i,j;//loop 변수
+
+        for(j=0; j<7; j++){//도착해야할 GOAL지점 1로 설정
+
+            canGoToGoalPoint[0][j]=1;
+        }
+
+        for(i=0; i<11; i++){
+
+            for(j=0; j<7; j++){//wall_h을 보고 GOAL에 갈수있는지 갈수없는지 체크
+
+                if(wall_h[i][j]==0 && canGoToGoalPoint[i-1][j]==1){//위에 wall_h이 없고 wall_h위의 칸에서 GOAL에 접근 가능하다면
+
+                    canGoToGoalPoint[i][j]=1;
+                }else {
+
+                    canGoToGoalPoint[i][j]=0;
+                }
+            }
+
+
+            int startPoint=0, endPoint=0, canGo=0;
+
+            for(j=0; j<6; j++){//wall_v를 보고 GOAL에 갈수있는지 갈수없는지 체크
+
+                if(wall_v[i][j]==0){
+
+                    canGo+=canGoToGoalPoint[i][j];
+                    endPoint++;
+                } else{
+
+                    if(canGo !=0){//같은 행 wall_v와 wall_v사이에 1이 하나라도 있으면
+
+                        for(int k=startPoint; k<=endPoint; k++){//그 wall_v사이의 모든 칸에 1 넣는다.
+
+                            canGoToGoalPoint[i][k]=1;
+                        }
+                    }
+
+                    startPoint = endPoint+1;
+                    endPoint = startPoint;
+                }
+
+                if(endPoint==6){//wall_v가 끝나지 않고 마지막 버튼 까지 이어져 있는 경우
+
+                    canGo+=canGoToGoalPoint[i][6];
+
+                    if(canGo !=0){
+
+                        for(int k=startPoint; k<=endPoint; k++){
+
+                            canGoToGoalPoint[i][k]=1;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        int startPoint=0, endPoint=0, canGo=0;
+
+        for(i=0; i<11; i++){
+
+            if(wall_h[i][/*플레이어 열 위치*/] == 0 ){
+
+                canGo+=canGoToGoalPoint[i][/*플레이어 열 위치*/];
+                endPoint++;
+
+            }else{
+
+                if(canGo!=0){
+
+                    for(int k=startPoint; k<=endPoint; k++){
+
+                        canGoToGoalPoint[k][/*플레이어 열 위치*/] = 1;
+                    }
+                }
+
+                startPoint = endPoint+1;
+                endPoint = startPoint;
+            }
+
+            if(endPoint==11){
+
+                canGo+=canGoToGoalPoint[11][/*플레이어 열 위치*/];
+
+                for(int k=startPoint; k<=endPoint; k++){
+
+                    canGoToGoalPoint[k][/*플레이어 열 위치*/] = 1;
+                }
+
+            }
+        }
+
+
     }
 }

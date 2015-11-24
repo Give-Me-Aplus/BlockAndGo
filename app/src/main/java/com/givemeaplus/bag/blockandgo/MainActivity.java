@@ -44,39 +44,46 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         for(int i=0; i<childViews.length; i++){
 
-            if(childViews[i].getTag() != null){
+            if(childViews[i] instanceof ViewGroup){
 
-                String tag = childViews[i].getTag().toString().trim();
-                String tagTemp = tag;
-                int ii,ij;
+                makeBtnArr((ViewGroup)childViews[i]);
 
-                if(tagTemp.contains("block")){
+            }else if(childViews[i] instanceof Button){
 
-                    tagTemp.replace("block", "");
-                    int index = Integer.parseInt(tagTemp);
+                if(childViews[i].getTag() != null){
 
-                    ii = index/10;
-                    ij = index%10;
+                    String tag = childViews[i].getTag().toString().trim();
+                    String tagTemp = tag;
+                    int ii,ij;
 
-                    blockArr[ii][ij] = tag;
-                }else if(tagTemp.contains("wall_h")){
+                    if(tagTemp.contains("block")){
 
-                    tagTemp.replace("wall_h", "");
-                    int index = Integer.parseInt(tagTemp);
+                        tagTemp.replace("block", "");
+                        int index = Integer.parseInt(tagTemp);
 
-                    ii = index/10;
-                    ij = index%10;
+                        ii = index/10;
+                        ij = index%10;
 
-                    wall_hArr[ii][ij] = tag;
-                }else if(tagTemp.contains("wall_v")){
+                        blockArr[ii][ij] = tag;
+                    }else if(tagTemp.contains("wall_h")){
 
-                    tagTemp.replace("wall_v", "");
-                    int index = Integer.parseInt(tagTemp);
+                        tagTemp.replace("wall_h", "");
+                        int index = Integer.parseInt(tagTemp);
 
-                    ii = index/10;
-                    ij = index%10;
+                        ii = index/10;
+                        ij = index%10;
 
-                    wall_vArr[ii][ij] = tag;
+                        wall_hArr[ii][ij] = tag;
+                    }else if(tagTemp.contains("wall_v")){
+
+                        tagTemp.replace("wall_v", "");
+                        int index = Integer.parseInt(tagTemp);
+
+                        ii = index/10;
+                        ij = index%10;
+
+                        wall_vArr[ii][ij] = tag;
+                    }
                 }
             }
         }
