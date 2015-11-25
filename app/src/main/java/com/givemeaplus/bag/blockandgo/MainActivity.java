@@ -14,7 +14,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     LinearLayout parentLayout;
     View[] childViews;
-
     Thread timer;
 
     BoardState mBoardState;
@@ -65,43 +64,43 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 makeBtnArr((ViewGroup)childViews[i]);
 
-            }else if(childViews[i] instanceof Button){
+            }else if(childViews[i] instanceof Button) {
 
-                if(childViews[i].getTag() != null){
+                if (childViews[i].getTag() != null) {
 
                     String tagTemp = childViews[i].getTag().toString();
 
                     System.out.println(tagTemp);
 
-                    int ii,ij;
+                    int ii, ij;
 
-                    if(tagTemp.contains("block")){
+                    if (tagTemp.contains("block")) {
 
                         String tmp = tagTemp.replace("block", "");
                         int index = Integer.parseInt(tmp);
 
-                        ii = index/10;
-                        ij = index%10;
+                        ii = index / 10;
+                        ij = index % 10;
 
-                        blockArr[ii][ij] = (Button)childViews[i];
-                    }else if(tagTemp.contains("wall_h")){
+                        blockArr[ii][ij] = (Button) childViews[i];
+                    } else if (tagTemp.contains("wall_h")) {
 
                         String tmp = tagTemp.replace("wall_h", "");
                         int index = Integer.parseInt(tmp);
 
-                        ii = index/10;
-                        ij = index%10;
+                        ii = index / 10;
+                        ij = index % 10;
 
-                        wall_hArr[ii][ij] = (Button)childViews[i];
-                    }else if(tagTemp.contains("wall_v")){
+                        wall_hArr[ii][ij] = (Button) childViews[i];
+                    } else if (tagTemp.contains("wall_v")) {
 
                         String tmp = tagTemp.replace("wall_v", "");
                         int index = Integer.parseInt(tmp);
 
-                        ii = index/10;
-                        ij = index%10;
+                        ii = index / 10;
+                        ij = index % 10;
 
-                        wall_vArr[ii][ij] = (Button)childViews[i];
+                        wall_vArr[ii][ij] = (Button) childViews[i];
                     }
                 }
             }
@@ -156,7 +155,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         final View[] childViews = new View[childCnt];
 
         for(int i=0; i<childCnt; i++){
-
             childViews[i] = viewGroup.getChildAt(i);
         }
 
