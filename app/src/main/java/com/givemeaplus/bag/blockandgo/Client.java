@@ -21,7 +21,7 @@ public class Client {
     private static OutputStreamWriter writer = null;
     private static Thread thread = null;
 
-    public Client getInstance(){
+    public static Client getInstance(){
         if(mClient==null) mClient = new Client();
         return mClient;
     }
