@@ -6,23 +6,24 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
 
     LinearLayout parentLayout;
-    View[] childViews;
+    //View[] childViews;
 
     BoardState mBoardState;
 
-    String[][] blockArr = new String[11][7];
-    String[][] wall_hArr = new String[10][7];
-    String[][] wall_vArr = new String[11][6];
+    Button[][] blockArr = new Button[11][7];
+    Button[][] wall_hArr = new Button[10][7];
+    Button[][] wall_vArr = new Button[11][6];
 
 
-
-    //Singleton singleton;
+//////////////Singleton singleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +31,31 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         parentLayout = (LinearLayout)findViewById(R.id.parent_layout);
-//        setOnClickListener(parentLayout);
+/////////////////        setOnClickListener(parentLayout);
         makeBtnArr(parentLayout);
 
         mBoardState = BoardState.getInstance();
 
         mBoardState.showBlock();
+
+        for(int i=0; i<11; i++){
+
+            for(int j=0; j<7; j++){
+
+                blockArr[i][j].setEnabled(false);
+            }
+        }
+
+
     }
 
-    private void makeBtnArr(ViewGroup viewGroup){//block과 wall_h
+    private void makeBtnArr(ViewGroup viewGroup){
 
-        childViews = getChildViews(viewGroup);
+        View[] childViews = getChildViews(viewGroup);
 
-        for(int i=0; i<childViews.length; i++){
+        for(int i=0;i<childViews.length; i++){
 
-            if(childViews[i] instanceof ViewGroup){
+            if(childViews[i] instanceof LinearLayout ){
 
                 makeBtnArr((ViewGroup)childViews[i]);
 
@@ -53,36 +64,44 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if(childViews[i].getTag() != null){
 
                     String tag = childViews[i].getTag().toString().trim();
-                    String tagTemp = tag;
+
                     int ii,ij;
 
-                    if(tagTemp.contains("block")){
+                    if(tag.contains("block")){
 
-                        tagTemp.replace("block", "");
-                        int index = Integer.parseInt(tagTemp);
+                        //Log.d("dSJW", "\t\t\t tag  = "+tag);
+                        tag = tag.replace("block", "");
 
-                        ii = index/10;
-                        ij = index%10;
-
-                        blockArr[ii][ij] = tag;
-                    }else if(tagTemp.contains("wall_h")){
-
-                        tagTemp.replace("wall_h", "");
-                        int index = Integer.parseInt(tagTemp);
+                        int index = Integer.parseInt(tag);
 
                         ii = index/10;
                         ij = index%10;
 
-                        wall_hArr[ii][ij] = tag;
-                    }else if(tagTemp.contains("wall_v")){
+                        blockArr[ii][ij] = (Button)childViews[i];
 
-                        tagTemp.replace("wall_v", "");
-                        int index = Integer.parseInt(tagTemp);
+                    }else if(tag.contains("wall_h")){
+
+                        //Log.d("dSJW", "\t\t\t tag  = "+tag);
+
+                        tag = tag.replace("wall_h", "");
+                        int index = Integer.parseInt(tag);
 
                         ii = index/10;
                         ij = index%10;
 
-                        wall_vArr[ii][ij] = tag;
+                        wall_hArr[ii][ij] = (Button)childViews[i];
+
+                    }else if(tag.contains("wall_v")){
+
+                        //Log.d("dSJW", "\t\t\t tag  = "+tag);
+                        tag = tag.replace("wall_v", "");
+                        int index = Integer.parseInt(tag);
+
+                        ii = index/10;
+                        ij = index%10;
+
+                        wall_vArr[ii][ij] = (Button)childViews[i];
+
                     }
                 }
             }

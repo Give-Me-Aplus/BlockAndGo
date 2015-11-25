@@ -113,7 +113,7 @@ public class BoardState {
     public void showBlock(){
 
         int i,j;
-        Log.d("dSJW", "block : ");
+ //       Log.d("dSJW", "block : ");
 
         for(i=0; i<11; i++){
 
@@ -153,9 +153,11 @@ public class BoardState {
     //canGoToGoalPoint배열을 사용하는데 canGoToGoalPoint[i][j]이 0이면 block[i][j]에서 GOAL지점까지 이동불가이고
     //canGoToGoalPoint[i][j]이 1이면 block[i][j]에서 GOAL지점으로 이동할수있다.
     //현재 자신의 말의 위치가 1이면 성립한다!
-    public void checkARoute(){
+    public boolean checkARoute(int x, int y){
 
         int i,j;//loop 변수
+
+        boolean tof = false;
 
         for(j=0; j<7; j++){//도착해야할 GOAL지점 1로 설정
 
@@ -218,9 +220,9 @@ public class BoardState {
 
         for(i=0; i<11; i++){
 
-            if(wall_h[i][/*플레이어 열 위치*/] == 0 ){
+            if(wall_h[i][y] == 0 ){
 
-                canGo+=canGoToGoalPoint[i][/*플레이어 열 위치*/];
+                canGo+=canGoToGoalPoint[i][y];
                 endPoint++;
 
             }else{
@@ -229,7 +231,7 @@ public class BoardState {
 
                     for(int k=startPoint; k<=endPoint; k++){
 
-                        canGoToGoalPoint[k][/*플레이어 열 위치*/] = 1;
+                        canGoToGoalPoint[k][y] = 1;
                     }
                 }
 
@@ -239,16 +241,24 @@ public class BoardState {
 
             if(endPoint==11){
 
-                canGo+=canGoToGoalPoint[11][/*플레이어 열 위치*/];
+                canGo+=canGoToGoalPoint[11][y];
 
                 for(int k=startPoint; k<=endPoint; k++){
 
-                    canGoToGoalPoint[k][/*플레이어 열 위치*/] = 1;
+                    canGoToGoalPoint[k][y] = 1;
                 }
 
             }
         }
 
 
+
+        if(canGoToGoalPoint[x][y] == 1){
+
+           tof = true;
+        }
+
+
+        return tof;
     }
 }
