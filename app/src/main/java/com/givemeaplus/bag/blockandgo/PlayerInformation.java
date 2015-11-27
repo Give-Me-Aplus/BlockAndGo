@@ -5,7 +5,7 @@ package com.givemeaplus.bag.blockandgo;
  */
 public class PlayerInformation {
 
-    private String userName;
+    String userName;
 
     private int numWall;
     private int numItem;

@@ -32,7 +32,7 @@ public class StartActivity extends Activity {
                     }
                 }
 
-                Intent intent = new Intent(StartActivity.this, WaitingRoomActivity.class);
+                Intent intent = new Intent(StartActivity.this, LoginActivity.class);
                 startActivityForResult(intent, 0);
 
             }
