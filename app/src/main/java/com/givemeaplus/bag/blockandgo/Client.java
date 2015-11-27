@@ -2,6 +2,9 @@ package com.givemeaplus.bag.blockandgo;
 
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
@@ -17,8 +20,8 @@ public class Client {
     private static Client mClient = null;
 
     private static Socket connectionSocket = null;
-    private static InputStreamReader reader = null;
-    private static OutputStreamWriter writer = null;
+    private static BufferedReader reader = null;
+    private static BufferedWriter writer = null;
     private static Thread thread = null;
 
     public static Client getInstance(){
@@ -29,13 +32,32 @@ public class Client {
     private Client(){
         try{
             connectionSocket = new Socket(DEST_IP, PORT_NUM);
-            reader = new InputStreamReader(connectionSocket.getInputStream());
-            writer = new OutputStreamWriter(connectionSocket.getOutputStream());
-        }catch(Exception e){}
+
+            reader = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
+            writer = new BufferedWriter(new OutputStreamWriter(connectionSocket.getOutputStream()));
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 
-    public void send(PlayerInformation player){
+    public boolean sendName(PlayerInformation player){
+
+        // 서버에 이름을 보내서 중복되지 않으면 보낸 이름을 되돌려받음
+
+        String receiveMsg="";
+
+        try {
+            writer.write("Nickname#"+player.userName+"\n");
+            writer.flush();
+            receiveMsg = reader.readLine().toString().trim();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return receiveMsg.contains(player.userName)? true:false;
 
     }
 }
