@@ -15,12 +15,8 @@ import java.util.logging.Handler;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     LinearLayout parentLayout;
-<<<<<<< HEAD
-    //View[] childViews;
-=======
     View[] childViews;
     Thread timer;
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
     BoardState mBoardState;
 
@@ -28,13 +24,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     Button[][] wall_hArr = new Button[10][7];
     Button[][] wall_vArr = new Button[11][6];
 
-<<<<<<< HEAD
 
-//////////////Singleton singleton;
-=======
     PlayerInformation myPlayer;
     PlayerInformation enemy;
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,26 +35,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         parentLayout = (LinearLayout)findViewById(R.id.parent_layout);
-<<<<<<< HEAD
-/////////////////        setOnClickListener(parentLayout);
-=======
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
+
         makeBtnArr(parentLayout);
 
         mBoardState = BoardState.getInstance();
 
-<<<<<<< HEAD
-        mBoardState.showBlock();
-
-        for(int i=0; i<11; i++){
-
-            for(int j=0; j<7; j++){
-
-                blockArr[i][j].setEnabled(false);
-            }
-        }
-
-=======
         timer = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -76,7 +54,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //        for(int i=0; i<11; i++)
 //            for(int j=0; j<7; j++)
 //                blockArr[i][j].setEnabled(false);
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
     }
 
@@ -84,13 +61,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         View[] childViews = getChildViews(viewGroup);
 
-<<<<<<< HEAD
-        for(int i=0;i<childViews.length; i++){
-=======
         System.out.println(childViews.length);
 
         for(int i=0; i<childViews.length; i++){
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
             if(childViews[i] instanceof LinearLayout ){
 
@@ -100,70 +73,32 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 if (childViews[i].getTag() != null) {
 
-<<<<<<< HEAD
-                    String tag = childViews[i].getTag().toString().trim();
-
-                    int ii,ij;
-
-                    if(tag.contains("block")){
-
-                        //Log.d("dSJW", "\t\t\t tag  = "+tag);
-                        tag = tag.replace("block", "");
-
-                        int index = Integer.parseInt(tag);
-=======
                     String tagTemp = childViews[i].getTag().toString();
 
                     System.out.println(tagTemp);
 
                     int ii, ij;
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
                     if (tagTemp.contains("block")) {
 
-<<<<<<< HEAD
-                        blockArr[ii][ij] = (Button)childViews[i];
-
-                    }else if(tag.contains("wall_h")){
-
-                        //Log.d("dSJW", "\t\t\t tag  = "+tag);
-
-                        tag = tag.replace("wall_h", "");
-                        int index = Integer.parseInt(tag);
-=======
                         String tmp = tagTemp.replace("block", "");
                         int index = Integer.parseInt(tmp);
 
                         ii = index / 10;
                         ij = index % 10;
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
                         blockArr[ii][ij] = (Button) childViews[i];
                     } else if (tagTemp.contains("wall_h")) {
 
-<<<<<<< HEAD
-                        wall_hArr[ii][ij] = (Button)childViews[i];
-
-                    }else if(tag.contains("wall_v")){
-
-                        //Log.d("dSJW", "\t\t\t tag  = "+tag);
-                        tag = tag.replace("wall_v", "");
-                        int index = Integer.parseInt(tag);
-=======
                         String tmp = tagTemp.replace("wall_h", "");
                         int index = Integer.parseInt(tmp);
 
                         ii = index / 10;
                         ij = index % 10;
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
                         wall_hArr[ii][ij] = (Button) childViews[i];
                     } else if (tagTemp.contains("wall_v")) {
 
-<<<<<<< HEAD
-                        wall_vArr[ii][ij] = (Button)childViews[i];
-
-=======
                         String tmp = tagTemp.replace("wall_v", "");
                         int index = Integer.parseInt(tmp);
 
@@ -171,7 +106,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         ij = index % 10;
 
                         wall_vArr[ii][ij] = (Button) childViews[i];
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
+
                     }
                 }
             }

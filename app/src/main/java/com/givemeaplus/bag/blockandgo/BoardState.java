@@ -246,18 +246,8 @@ public class BoardState {
 
             }
         }
-
-
-        if(canGoToGoalPoint[x][y] == 1){
-
-           tof = true;
-        }
-
-
-        return tof;
-=======
+        
         return canGoToGoalPoint[x][y]==1 ?  true : false;
 
->>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
     }
 }
