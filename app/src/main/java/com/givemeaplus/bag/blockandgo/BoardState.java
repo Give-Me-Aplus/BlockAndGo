@@ -20,11 +20,6 @@ public class BoardState {
     private static BoardState mBoardState = null;
 
 
-    private static int[][] canGoToGoalPoint;
-
-
-
-
     public static BoardState getInstance(){
         if(mBoardState==null) mBoardState = new BoardState();
         return mBoardState;
@@ -44,7 +39,6 @@ public class BoardState {
         wall_v = new int[11][6];
 
 
-        canGoToGoalPoint = new int[11][7];
     }
 
     public int[][] getBlock(){
@@ -155,6 +149,8 @@ public class BoardState {
     //현재 자신의 말의 위치가 1이면 성립한다!
     public boolean checkARoute(int x, int y){
 
+        int[][] canGoToGoalPoint = new int[11][7];
+
         int i,j;//loop 변수
 
         boolean tof = false;
@@ -252,7 +248,6 @@ public class BoardState {
         }
 
 
-
         if(canGoToGoalPoint[x][y] == 1){
 
            tof = true;
@@ -260,5 +255,9 @@ public class BoardState {
 
 
         return tof;
+=======
+        return canGoToGoalPoint[x][y]==1 ?  true : false;
+
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
     }
 }

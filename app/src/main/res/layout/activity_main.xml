@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".MainActivity"
+    android:id="@+id/parent_layout"
     android:background="#ffffff"
     android:orientation="vertical">
 
@@ -99,7 +100,6 @@
 
 
         <LinearLayout
-            android:id="@+id/parent_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -114,11 +114,13 @@
                 android:orientation="horizontal">
 
                 <Button android:tag="block00"
+                    android:id="@+id/block00"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:onClick="onClickBlock"
                     android:background="@color/block_blue"/>
                 <Button android:tag="wall_v00"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -133,6 +135,7 @@
                 <Button android:tag="wall_v01"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -145,6 +148,7 @@
                 <Button android:tag="wall_v02"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -157,6 +161,7 @@
                 <Button android:tag="wall_v03"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -169,6 +174,7 @@
                 <Button android:tag="wall_v04"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -181,6 +187,7 @@
                 <Button android:tag="wall_v05"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -277,6 +284,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v10"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -291,6 +299,7 @@
                 <Button android:tag="wall_v11"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -303,6 +312,7 @@
                 <Button android:tag="wall_v12"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -315,6 +325,7 @@
                 <Button android:tag="wall_v13"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -327,6 +338,7 @@
                 <Button android:tag="wall_v14"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -339,6 +351,7 @@
                 <Button android:tag="wall_v15"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -435,6 +448,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v20"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -449,6 +463,7 @@
                 <Button android:tag="wall_v21"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -461,6 +476,7 @@
                 <Button android:tag="wall_v22"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -473,6 +489,7 @@
                 <Button android:tag="wall_v23"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -485,6 +502,7 @@
                 <Button android:tag="wall_v24"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -497,6 +515,7 @@
                 <Button android:tag="wall_v25"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -593,6 +612,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v30"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -607,6 +627,7 @@
                 <Button android:tag="wall_v32"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -619,6 +640,7 @@
                 <Button android:tag="wall_v32"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -631,6 +653,7 @@
                 <Button android:tag="wall_v33"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -643,6 +666,7 @@
                 <Button android:tag="wall_v34"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -655,6 +679,7 @@
                 <Button android:tag="wall_v35"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -751,6 +776,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v40"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -765,6 +791,7 @@
                 <Button android:tag="wall_v41"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -777,6 +804,7 @@
                 <Button android:tag="wall_v42"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -789,6 +817,7 @@
                 <Button android:tag="wall_v43"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -801,6 +830,7 @@
                 <Button android:tag="wall_v44"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -813,6 +843,7 @@
                 <Button android:tag="wall_v45"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -909,6 +940,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v50"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -923,6 +955,7 @@
                 <Button android:tag="wall_v51"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -935,6 +968,7 @@
                 <Button android:tag="wall_v52"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -947,6 +981,7 @@
                 <Button android:tag="wall_v53"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -959,6 +994,7 @@
                 <Button android:tag="wall_v54"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -971,6 +1007,7 @@
                 <Button android:tag="wall_v55"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1067,6 +1104,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v60"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -1081,6 +1119,7 @@
                 <Button android:tag="wall_v61"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1093,6 +1132,7 @@
                 <Button android:tag="wall_v62"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1105,6 +1145,7 @@
                 <Button android:tag="wall_v63"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1117,6 +1158,7 @@
                 <Button android:tag="wall_v64"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1129,6 +1171,7 @@
                 <Button android:tag="wall_v65"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1225,6 +1268,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v70"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -1239,6 +1283,7 @@
                 <Button android:tag="wall_v71"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1251,6 +1296,7 @@
                 <Button android:tag="wall_v72"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1263,6 +1309,7 @@
                 <Button android:tag="wall_v73"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1275,6 +1322,7 @@
                 <Button android:tag="wall_v74"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1287,6 +1335,7 @@
                 <Button android:tag="wall_v75"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1383,6 +1432,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v80"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -1397,6 +1447,7 @@
                 <Button android:tag="wall_v81"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1409,6 +1460,7 @@
                 <Button android:tag="wall_v82"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1421,6 +1473,7 @@
                 <Button android:tag="wall_v83"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1433,6 +1486,7 @@
                 <Button android:tag="wall_v84"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1445,6 +1499,7 @@
                 <Button android:tag="wall_v85"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1541,6 +1596,7 @@
                     android:onClick="onClickBlock"
                     android:background="#c0c0c0"/>
                 <Button android:tag="wall_v90"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -1555,6 +1611,7 @@
                 <Button android:tag="wall_v91"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1567,6 +1624,7 @@
                 <Button android:tag="wall_v92"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1579,6 +1637,7 @@
                 <Button android:tag="wall_v93"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1591,6 +1650,7 @@
                 <Button android:tag="wall_v94"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1603,6 +1663,7 @@
                 <Button android:tag="wall_v95"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1699,6 +1760,7 @@
                     android:onClick="onClickBlock"
                     android:background="@color/block_red"/>
                 <Button android:tag="wall_v100"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -1713,6 +1775,7 @@
                 <Button android:tag="wall_v101"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1725,7 +1788,7 @@
                 <Button android:tag="wall_v102"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
-                    android:onClick="onClickBlock"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1738,6 +1801,7 @@
                 <Button android:tag="wall_v103"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1750,6 +1814,7 @@
                 <Button android:tag="wall_v104"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>
@@ -1762,6 +1827,7 @@
                 <Button android:tag="wall_v105"
                     android:layout_width="8dp"
                     android:layout_height="30dp"
+                    android:onClick="onClickWall_v"
                     android:background="@color/wall_blank"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"/>

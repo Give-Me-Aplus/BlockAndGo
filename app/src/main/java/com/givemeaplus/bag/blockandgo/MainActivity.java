@@ -10,11 +10,17 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import java.util.logging.Handler;
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
-
     LinearLayout parentLayout;
+<<<<<<< HEAD
     //View[] childViews;
+=======
+    View[] childViews;
+    Thread timer;
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
     BoardState mBoardState;
 
@@ -22,8 +28,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     Button[][] wall_hArr = new Button[10][7];
     Button[][] wall_vArr = new Button[11][6];
 
+<<<<<<< HEAD
 
 //////////////Singleton singleton;
+=======
+    PlayerInformation myPlayer;
+    PlayerInformation enemy;
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +42,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         parentLayout = (LinearLayout)findViewById(R.id.parent_layout);
+<<<<<<< HEAD
 /////////////////        setOnClickListener(parentLayout);
+=======
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
         makeBtnArr(parentLayout);
 
         mBoardState = BoardState.getInstance();
 
+<<<<<<< HEAD
         mBoardState.showBlock();
 
         for(int i=0; i<11; i++){
@@ -46,6 +61,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         }
 
+=======
+        timer = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 1초 지날때마다 핸들러로 타이머 텍스트뷰 숫자 변경
+            }
+        });
+
+        Button button = (Button)findViewById(R.id.block00);
+
+        button.setEnabled(false);
+//
+//        for(int i=0; i<11; i++)
+//            for(int j=0; j<7; j++)
+//                blockArr[i][j].setEnabled(false);
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
     }
 
@@ -53,16 +84,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         View[] childViews = getChildViews(viewGroup);
 
+<<<<<<< HEAD
         for(int i=0;i<childViews.length; i++){
+=======
+        System.out.println(childViews.length);
+
+        for(int i=0; i<childViews.length; i++){
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
             if(childViews[i] instanceof LinearLayout ){
 
                 makeBtnArr((ViewGroup)childViews[i]);
 
-            }else if(childViews[i] instanceof Button){
+            }else if(childViews[i] instanceof Button) {
 
-                if(childViews[i].getTag() != null){
+                if (childViews[i].getTag() != null) {
 
+<<<<<<< HEAD
                     String tag = childViews[i].getTag().toString().trim();
 
                     int ii,ij;
@@ -73,10 +111,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         tag = tag.replace("block", "");
 
                         int index = Integer.parseInt(tag);
+=======
+                    String tagTemp = childViews[i].getTag().toString();
 
-                        ii = index/10;
-                        ij = index%10;
+                    System.out.println(tagTemp);
 
+                    int ii, ij;
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
+
+                    if (tagTemp.contains("block")) {
+
+<<<<<<< HEAD
                         blockArr[ii][ij] = (Button)childViews[i];
 
                     }else if(tag.contains("wall_h")){
@@ -85,10 +130,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                         tag = tag.replace("wall_h", "");
                         int index = Integer.parseInt(tag);
+=======
+                        String tmp = tagTemp.replace("block", "");
+                        int index = Integer.parseInt(tmp);
 
-                        ii = index/10;
-                        ij = index%10;
+                        ii = index / 10;
+                        ij = index % 10;
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
+                        blockArr[ii][ij] = (Button) childViews[i];
+                    } else if (tagTemp.contains("wall_h")) {
+
+<<<<<<< HEAD
                         wall_hArr[ii][ij] = (Button)childViews[i];
 
                     }else if(tag.contains("wall_v")){
@@ -96,36 +149,34 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         //Log.d("dSJW", "\t\t\t tag  = "+tag);
                         tag = tag.replace("wall_v", "");
                         int index = Integer.parseInt(tag);
+=======
+                        String tmp = tagTemp.replace("wall_h", "");
+                        int index = Integer.parseInt(tmp);
 
-                        ii = index/10;
-                        ij = index%10;
+                        ii = index / 10;
+                        ij = index % 10;
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
 
+                        wall_hArr[ii][ij] = (Button) childViews[i];
+                    } else if (tagTemp.contains("wall_v")) {
+
+<<<<<<< HEAD
                         wall_vArr[ii][ij] = (Button)childViews[i];
 
+=======
+                        String tmp = tagTemp.replace("wall_v", "");
+                        int index = Integer.parseInt(tmp);
+
+                        ii = index / 10;
+                        ij = index % 10;
+
+                        wall_vArr[ii][ij] = (Button) childViews[i];
+>>>>>>> 92f334940d6328074b665d01902e78adf9c327b4
                     }
                 }
             }
         }
     }
-
-//    private void setOnClickListener(ViewGroup viewGroup){
-//
-//        childViews = getChildViews(viewGroup);
-//
-//        for(int i=0; i<childViews.length; i++){
-//
-//            if(childViews[i].getTag() != null) {
-//                String tag = childViews[i].getTag().toString();
-//
-//                if (tag.contains("block") || tag.contains("wall") || tag.contains("btn"))
-//                    childViews[i].setOnClickListener(this);
-//            }
-////            if(childViews[i] instanceof Button)
-////                childViews[i].setOnClickListener(this);
-////            else if(childViews[i] instanceof ViewGroup)
-////                setOnClickListener((ViewGroup) childViews[i]);
-//        }
-//    }
 
     public void onClickBlock(View v){
 
@@ -151,7 +202,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
         int i = index/10;
         int j = index%10;
 
+        System.out.println("wall_h "+i+" "+j);
         mBoardState.setWall_h(i, j, true);
+    }
+
+    public void onClickWall_v(View v){
+        String id_index = v.getTag().toString();
+        int index;
+
+        id_index = id_index.replace("wall_v", "");
+        index = Integer.parseInt(id_index);
+        int i = index/10;
+        int j = index%10;
+
+        System.out.println("wall_v "+i+" "+j);
+        mBoardState.setWall_v(i, j, true);
     }
 
 
@@ -161,7 +226,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         final View[] childViews = new View[childCnt];
 
         for(int i=0; i<childCnt; i++){
-
             childViews[i] = viewGroup.getChildAt(i);
         }
 
