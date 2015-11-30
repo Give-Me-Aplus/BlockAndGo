@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import java.util.logging.Handler;
 
@@ -21,8 +23,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     Button[][] wall_hArr = new Button[10][7];
     Button[][] wall_vArr = new Button[11][6];
 
+
     PlayerInformation myPlayer;
     PlayerInformation enemy;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         parentLayout = (LinearLayout)findViewById(R.id.parent_layout);
+
         makeBtnArr(parentLayout);
 
         mBoardState = BoardState.getInstance();
@@ -51,7 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     }
 
-    private void makeBtnArr(ViewGroup viewGroup){//block과 wall_h
+    private void makeBtnArr(ViewGroup viewGroup){
 
         View[] childViews = getChildViews(viewGroup);
 
@@ -59,7 +64,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         for(int i=0; i<childViews.length; i++){
 
-            if(childViews[i] instanceof ViewGroup){
+            if(childViews[i] instanceof LinearLayout ){
 
                 makeBtnArr((ViewGroup)childViews[i]);
 
@@ -100,6 +105,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         ij = index % 10;
 
                         wall_vArr[ii][ij] = (Button) childViews[i];
+
                     }
                 }
             }

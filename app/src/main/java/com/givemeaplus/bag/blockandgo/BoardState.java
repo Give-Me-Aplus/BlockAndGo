@@ -107,7 +107,7 @@ public class BoardState {
     public void showBlock(){
 
         int i,j;
-        Log.d("dSJW", "block : ");
+ //       Log.d("dSJW", "block : ");
 
         for(i=0; i<11; i++){
 
@@ -149,10 +149,11 @@ public class BoardState {
     //현재 자신의 말의 위치가 1이면 성립한다!
     public boolean checkARoute(int x, int y){
 
-
         int[][] canGoToGoalPoint = new int[11][7];
 
         int i,j;//loop 변수
+
+        boolean tof = false;
 
         for(j=0; j<7; j++){//도착해야할 GOAL지점 1로 설정
 
@@ -245,8 +246,7 @@ public class BoardState {
 
             }
         }
-
-
+        
         return canGoToGoalPoint[x][y]==1 ?  true : false;
 
     }
