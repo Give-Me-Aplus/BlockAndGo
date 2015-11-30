@@ -5,33 +5,60 @@ package com.givemeaplus.bag.blockandgo;
  */
 public class PlayerInformation {
 
-    String userName;
+    private static PlayerInformation myPlayer = null;
 
-    private int numWall;
-    private int numItem;
+    private static String userName;
 
-    private int x, y;
+    private static int numWall;
+    private static int numItem;
+
+    private static int x, y;
 
     // 1이면 red, 2면 blue
     private int type;
 
-    public PlayerInformation(String name, int type){
+
+    public static PlayerInformation getMyPlayer(){
+        if(myPlayer==null) myPlayer = new PlayerInformation("");
+        return myPlayer;
+    }
+
+    private PlayerInformation(String name){
         userName = name;
-        this.type = type;
         numWall = 8;
         numItem = 0;
 
+        x=3; y=10;  // 시작위치
+    }
+
+    public void setName(String name){
+        userName = name;
+    }
+
+    public String getName(){
+        return userName;
+    }
+
+    public int getType(){
+        return type;
+    }
+
+    public void setType(int a){
+        type = a;
     }
 
     public void decreaseWall(){
+
         numWall--;
     }
 
     public void decreaseItem(){
+
         numItem--;
     }
 
     public void increaseItem(){
+
         numItem++;
     }
 

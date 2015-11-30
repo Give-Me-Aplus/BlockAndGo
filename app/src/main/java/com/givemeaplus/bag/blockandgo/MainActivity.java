@@ -13,7 +13,6 @@ import java.util.logging.Handler;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     LinearLayout parentLayout;
-    View[] childViews;
     Thread timer;
 
     BoardState mBoardState;
@@ -54,7 +53,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void makeBtnArr(ViewGroup viewGroup){//block과 wall_h
 
-        childViews = getChildViews(viewGroup);
+        View[] childViews = getChildViews(viewGroup);
 
         System.out.println(childViews.length);
 

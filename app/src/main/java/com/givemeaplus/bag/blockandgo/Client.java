@@ -42,14 +42,14 @@ public class Client {
     }
 
 
-    public boolean sendName(PlayerInformation player){
+    public boolean sendName(String name){
 
         // 서버에 이름을 보내서 중복되지 않으면 보낸 이름을 되돌려받음
 
         String receiveMsg="";
 
         try {
-            writer.write("Nickname#"+player.userName+"\n");
+            writer.write("Nickname#"+name+"\n");
             writer.flush();
             receiveMsg = reader.readLine().toString().trim();
         } catch (IOException e) {
@@ -57,7 +57,7 @@ public class Client {
         }
 
 
-        return receiveMsg.contains(player.userName)? true:false;
+        return receiveMsg.contains(name)? true:false;
 
     }
 }
