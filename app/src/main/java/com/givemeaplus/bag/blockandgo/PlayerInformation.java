@@ -7,6 +7,7 @@ public class PlayerInformation {
 
     private static PlayerInformation myPlayer = null;
 
+    // 본인 정보
     private static String userName;
 
     private static int numWall;
@@ -15,7 +16,11 @@ public class PlayerInformation {
     private static int x, y;
 
     // 1이면 red, 2면 blue
-    private int type;
+    private static int type;
+
+
+    // 상대방 정보
+    private static String enemyName;
 
 
     public static PlayerInformation getMyPlayer(){
@@ -25,6 +30,8 @@ public class PlayerInformation {
 
     private PlayerInformation(String name){
         userName = name;
+        enemyName = null;
+
         numWall = 8;
         numItem = 0;
 
@@ -35,8 +42,16 @@ public class PlayerInformation {
         userName = name;
     }
 
+    public void setEnemyName(String name){
+        enemyName = name;
+    }
+
     public String getName(){
         return userName;
+    }
+
+    public String getEnemyName(){
+        return enemyName;
     }
 
     public int getType(){

@@ -1,26 +1,25 @@
 package com.givemeaplus.bag.blockandgo;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Intent;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import android.os.Handler;
 
 /**
@@ -32,41 +31,94 @@ public class WaitingRoomActivity extends Activity {
     BaseAdapter_Room mAdapter;
 
     PlayerInformation myPlayer;
-    String enemyName;
 
+    Button addRoom, setting, refreshRoom;
+
+    Client client = null;
+
+    // 방 입장
     PopupWindow mPopupWindow = null;
-    View mPopupLayout = null;
+    View mPopupLayout_WaitingRoom = null;
 
-    Button ready_red, ready_blue, close;
-    TextView redName, blueName, roomInfo;
+    static Button ready_red, ready_blue, close;
+    static TextView redName, blueName, roomInfo;
 
-    boolean ready_count_red, ready_count_blue;
+    static boolean isGameStart = false;
+    static boolean isRoomLoaded = false;
+    static boolean isRoomError = false;
+
+    static String roomNum = null;
+
+    // 방만들기
+    PopupWindow mPopupWindow_MakingRoom = null;
+    View mPopupLayout_MakingRoom = null;
+
+    EditText roomName;
+    Button makeRoom, closeMakeRoom;
+
+    // 설정 프리퍼런스
+    PopupWindow mPopupWindow_setting = null;
+    View mPopupLayout_setting = null;
+
+    CheckBox background, effect;
+    Button btn_help, btn_developer, close_setting;
+
+    CustomPreference preference;
+
+    private ProgressDialog Loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waitingroom);
 
-        ready_count_red = true;     // 나중에 false로 바꿔놓을것!
-        ready_count_blue = false;
-
+        client = Client.getInstance(this);
         myPlayer = PlayerInformation.getMyPlayer();
+        preference = CustomPreference.getInstance(this);
 
-        // 나중에 지울것 **테스트용
-        enemyName = "HI Hyejeong";
+        Loading = new ProgressDialog(WaitingRoomActivity.this);
+        Loading.setCancelable(true);
+        Loading.setCanceledOnTouchOutside(false);
+        Loading.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        Loading.setMessage("방을 불러오는 중입니다...");
 
-
-        mPopupLayout = getLayoutInflater().inflate(R.layout.popupwindow_waitingroom, null);
-
-        ready_red = (Button)mPopupLayout.findViewById(R.id.btn_ready_red);
-        ready_blue = (Button)mPopupLayout.findViewById(R.id.btn_ready_blue);
-        close = (Button)mPopupLayout.findViewById(R.id.btn_close);
-
-        redName = (TextView)mPopupLayout.findViewById(R.id.waiting_name_red);
-        blueName = (TextView)mPopupLayout.findViewById(R.id.waiting_name_blue);
-        roomInfo = (TextView)mPopupLayout.findViewById(R.id.popup_roomInfo);
+        addRoom = (Button)findViewById(R.id.btn_add);
+        setting = (Button)findViewById(R.id.btn_setting);
+        refreshRoom = (Button)findViewById(R.id.btn_refresh);
 
 
+        // 대기실 팝업윈도우 변수 초기화
+        mPopupLayout_WaitingRoom = getLayoutInflater().inflate(R.layout.popupwindow_waitingroom, null);
+
+        ready_red = (Button)mPopupLayout_WaitingRoom.findViewById(R.id.btn_ready_red);
+        ready_blue = (Button)mPopupLayout_WaitingRoom.findViewById(R.id.btn_ready_blue);
+        close = (Button)mPopupLayout_WaitingRoom.findViewById(R.id.btn_close);
+
+        redName = (TextView)mPopupLayout_WaitingRoom.findViewById(R.id.waiting_name_red);
+        blueName = (TextView)mPopupLayout_WaitingRoom.findViewById(R.id.waiting_name_blue);
+        roomInfo = (TextView)mPopupLayout_WaitingRoom.findViewById(R.id.popup_roomInfo);
+
+
+        // 방만들기 팝업윈도우 변수 초기화
+        mPopupLayout_MakingRoom = getLayoutInflater().inflate(R.layout.popupwindow_makingroom, null);
+
+        roomName = (EditText)mPopupLayout_MakingRoom.findViewById(R.id.makingroom_name);
+        makeRoom = (Button)mPopupLayout_MakingRoom.findViewById(R.id.btn_make);
+        closeMakeRoom = (Button)mPopupLayout_MakingRoom.findViewById(R.id.btn_close_makingroom);
+
+
+        // 프리퍼런스 팝업윈도우 변수 초기화
+        mPopupLayout_setting = getLayoutInflater().inflate(R.layout.popupwindow_setting, null);
+
+        background = (CheckBox) mPopupLayout_setting.findViewById(R.id.check_backgroundMusic);
+        effect = (CheckBox) mPopupLayout_setting.findViewById(R.id.check_effectSound);
+
+        btn_help = (Button) mPopupLayout_setting.findViewById(R.id.btn_help);
+        btn_developer = (Button) mPopupLayout_setting.findViewById(R.id.btn_developer);
+        close_setting = (Button) mPopupLayout_setting.findViewById(R.id.close_setting);
+
+
+        // 리스트뷰
         mainListView = (ListView)findViewById(R.id.listview_room);
         mainListView.setDivider(new ColorDrawable(Color.rgb(200, 200, 200)));
         mainListView.setDividerHeight(3);
@@ -82,49 +134,193 @@ public class WaitingRoomActivity extends Activity {
                 myPlayer.setType(2);
 
                 Room tmp = mAdapter.getItem(a);
+                client.requestRoom(tmp.num);
 
-                //enemyplayer 정보 받아오고나서 팝업띄워야해
+                roomNum = tmp.num;
+                roomInfo.setText("Room " + tmp.num + "   " + tmp.name);
 
-                popupWaitingRoom(tmp);
-                // 다이얼로그? 로 상대방 들어오는거 대기타기!
+                Loading.show();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Handler mHandler = new Handler(Looper.getMainLooper());
+
+                        while(true){
+
+                            if(isRoomLoaded ||isRoomError) break;
+                        }
+
+                        if(isRoomLoaded){
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    popupWaitingRoom();
+                                }
+                            });
+                        }
+
+                        isRoomLoaded = false;
+                        isRoomError = false;
+
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Loading.dismiss();
+                            }
+                        });
+
+                    }
+                }).start();
+            }
+        });
+
+        addRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupMakeRoom();
+            }
+        });
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupSetting();
+            }
+        });
+
+        refreshRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter.refresh();
             }
         });
 
     }
 
-    public void popupWaitingRoom(Room tmp){
+    public void popupSetting(){
+        mPopupWindow_setting = new PopupWindow(mPopupLayout_setting, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, true);
+        mPopupWindow_setting.setFocusable(true);
+        mPopupWindow_setting.setOutsideTouchable(false);
 
-        mPopupWindow = new PopupWindow(mPopupLayout, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, true);
+        background.setChecked(preference.getBackgroundMusicState());
+        effect.setChecked(preference.getEffectSoundState());
+
+        background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (background.isChecked()) {
+                    preference.setBackgroundMusicState(true);
+                } else {
+                    preference.setBackgroundMusicState(false);
+                }
+            }
+        });
+
+        effect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(background.isChecked()){
+                    preference.setEffectSoundState(true);
+                }
+                else{
+                    preference.setEffectSoundState(false);
+                }
+            }
+        });
+
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btn_developer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        close_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopupWindow_setting.dismiss();
+            }
+        });
+
+
+        mPopupWindow_setting.showAtLocation(mainListView, Gravity.CENTER_VERTICAL, 0, 0);
+    }
+
+    public void popupMakeRoom(){
+        mPopupWindow_MakingRoom = new PopupWindow(mPopupLayout_MakingRoom, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, true);
+        mPopupWindow_MakingRoom.setFocusable(true);
+        mPopupWindow_MakingRoom.setOutsideTouchable(false);
+
+        // 키보드 바깥 터치하면 키보드 사라지는 기능
+        roomName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(roomName.getWindowToken(), 0);
+                }
+            }
+        });
+
+        closeMakeRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopupWindow_MakingRoom.dismiss();
+            }
+        });
+
+        makeRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tmp = roomName.getText().toString().trim();
+
+                if (tmp.compareTo("") == 0)
+                    Toast.makeText(getApplicationContext(), "Put name of room!", Toast.LENGTH_SHORT).show();
+                else if (tmp.contains("#"))
+                    Toast.makeText(getApplicationContext(), "Cannot contain '#' in the name!", Toast.LENGTH_SHORT).show();
+                else {
+                    client.makeRoom(tmp);
+
+                    mPopupWindow_MakingRoom.dismiss();
+                    popupWaitingRoom();
+
+                }
+            }
+        });
+
+        mPopupWindow_MakingRoom.showAtLocation(mainListView, Gravity.CENTER_VERTICAL, 0, 0);
+    }
+
+    // 게임 직전 레디를 위해 띄우는 대기 화면
+    // 서버로부터 방을 확실히 받아 온 뒤에 띄울 것
+    public void popupWaitingRoom(){
+
+        mPopupWindow = new PopupWindow(mPopupLayout_WaitingRoom, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, true);
         mPopupWindow.setFocusable(true);
         mPopupWindow.setOutsideTouchable(false);
-
-        // 뒤로버튼 눌렀을 때 방 나가는거도 고려해야해!
-        // 들어오면 ready 계속 체크하면서 버튼 이미지 변경해주는 스레드 돌리기
-
-        // 방을 선택해서 들어가거나, 직접 만들어서 들어가는 경우
-        // 선택해서 들어가는 경우 상대방을 먼저 서버로부터 받고 red/blue 배치시킬것
-        // 만들어서 들어가는 경우 나를 red에 넣고 상대방 기다리기
-        // 상대방을 서버로 받을 때 받아야하는 정보는 이름이랑 색깔(보내줘야하는것도 동일하군)
-
-        roomInfo.setText("Room " + tmp.num +"   "+ tmp.name);
-
-        if(myPlayer.getType()==1) {
-            redName.setText(myPlayer.getName());
-            ready_blue.setEnabled(false);
-            // 상대방 오는거 기다리기 - CLient에서 스레드 돌리기
-        }
-        else{
-            redName.setText(enemyName);
-            blueName.setText(myPlayer.getName());
-            ready_red.setEnabled(false);
-        }
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ready_count_red = true;     //false로 바꿔줄 것!
-                ready_count_blue = false;
+                // 방에서 나간다고 서버에 보내야돼
+                client.exitRoom();
+
+                roomNum = "";
+
+                roomInfo.setText("방을 불러오는 중입니다...");
+                roomName.setText("");
+                redName.setText("");
+                blueName.setText("");
 
                 close.setEnabled(true);
                 ready_red.setEnabled(true);
@@ -134,107 +330,51 @@ public class WaitingRoomActivity extends Activity {
                 ready_blue.setBackgroundResource(R.drawable.btn_not_ready);
 
                 mPopupWindow.dismiss();
+                mAdapter.refresh();
             }
         });
 
+        // 나의 ready 정보를 보내야 함
         ready_red.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!ready_count_red) ready_red.setBackgroundResource(R.drawable.btn_not_ready);
-                else ready_red.setBackgroundResource(R.drawable.btn_ready_red);
-                ready_count_red = !ready_count_red;
+                client.sendReady();
             }
         });
 
         ready_blue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!ready_count_red) ready_blue.setBackgroundResource(R.drawable.btn_not_ready);
-                else ready_blue.setBackgroundResource(R.drawable.btn_ready_blue);
-                ready_count_blue = !ready_count_blue;
+                client.sendReady();
             }
         });
-
-        // 게임시작띄우고 레디버튼 회색으로 만드는 스레드
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                while(true){
-                    if(ready_count_red && ready_count_blue) {
-                        ready_count_red=true;   // 네트워크 하면 false로 바꿀것
-                        ready_count_blue=false;
-                        break;
-                    }
-                }
-                Handler mHandler = new Handler(Looper.getMainLooper());
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        close.setEnabled(false);
-                        ready_red.setEnabled(false);
-                        ready_blue.setEnabled(false);
-
-                        Toast.makeText(getApplicationContext(), "잠시 후 게임이 시작됩니다!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ready_red.setBackgroundResource(R.drawable.btn_not_ready);
-                        ready_blue.setBackgroundResource(R.drawable.btn_not_ready);
-                    }
-                });
-            }
-        });
-        t.start();
-
-        // 3초 뒤 인텐트 넘어가는 작업
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(true){
-                    if(ready_count_red && ready_count_blue) {
-                        break;
-                    }
-                }
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                Intent intent = new Intent(WaitingRoomActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        t2.start();
 
         mPopupWindow.showAtLocation(mainListView, Gravity.CENTER_VERTICAL, 0, 0);
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(isGameStart){
+            isGameStart = false;
+            client.requestRoom(roomNum);
+            popupWaitingRoom();
+        }
+
+    }
 
     @Override
     protected void onStop() {
         super.onStop();
-
-
         if(mPopupWindow != null) {
 
-            //연결 끊기
+            if(!isGameStart) client.exitRoom();
 
-            ready_count_red = true; // false로 바꿔줄것
-            ready_count_blue = false;
+            roomInfo.setText("방을 불러오는 중입니다...");
+            redName.setText("");
+            blueName.setText("");
 
             close.setEnabled(true);
             ready_red.setEnabled(true);
@@ -245,6 +385,5 @@ public class WaitingRoomActivity extends Activity {
 
             mPopupWindow.dismiss();
         }
-
     }
 }

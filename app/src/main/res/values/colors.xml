@@ -12,4 +12,17 @@
     <color name="block_red">#ffadad</color>
     <color name="block_default">#c0c0c0</color>
 
+
+    <color name="can_go">#88ebbe</color>
+
+    <color name="tempcolor_najungahjabakua">#c53ae2</color>
+
+    <color name="wallishere">#884773</color>
+
+    <color name="ismyturn">#fdff4d</color>
+    <color name="isnotmyturn">#ffffff</color>
+
+
+    <color name="agro1">#cc37cc</color>
+    <color name="agro2">#e4bfed</color>
 </resources>

@@ -1,0 +1,61 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:drawable="@drawable/fire"
+        android:duration="200" />
+
+    <!--
+    <item
+        android:drawable="@drawable/fire00"
+        android:duration="200" />
+
+    <item
+        android:drawable="@drawable/fire001"
+        android:duration="200" />
+-->
+    <item
+        android:drawable="@drawable/fire1"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire2"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire3"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire4"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire5"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire6"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire61"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire62"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire63"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire64"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire65"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire3"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire6"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire3"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/fire6"
+        android:duration="200" />
+</animation-list>

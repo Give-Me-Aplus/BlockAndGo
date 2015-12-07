@@ -7,12 +7,15 @@ public class Room {
     String num;
     String name;
 
-    public Room(int x, String y){
-        num = String.valueOf(x);
+    String numOfPlayer;
+
+    public Room(String x, String y, String p){
+        num = x;
         name = y;
+        numOfPlayer = p;
     }
 
     public String toString(){
-        return num+" "+name;
+        return "Room "+num+"    "+name;
     }
 }

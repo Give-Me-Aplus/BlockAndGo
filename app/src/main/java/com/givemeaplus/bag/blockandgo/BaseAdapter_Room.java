@@ -1,7 +1,10 @@
 package com.givemeaplus.bag.blockandgo;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,43 +13,83 @@ import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Hye Jeong on 2015-11-25.
  */
 public class BaseAdapter_Room extends BaseAdapter {
 
-    Context mContext = null;
-    LayoutInflater mLayoutInflater = null;
+    private Context mContext = null;
+    private LayoutInflater mLayoutInflater = null;
 
-    Client connection;
-    ArrayList<Room> rooms;
+    private ProgressDialog Loading;
+
+    Client client;
+    public static ArrayList<Room> rooms;
+
+    public static boolean dataChanged = false;
 
     public BaseAdapter_Room(Context context) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
         rooms = new ArrayList<Room>();
 
-        //connection = Client.getInstance();
+        client = Client.getInstance(mContext);
 
-        for(int i=0; i<10; i++){
-            Room r = new Room(i, "HJ "+i);
-            System.out.println("HJ");
-            rooms.add(r);
-        }
+        Loading = new ProgressDialog(mContext);
+        Loading.setCancelable(true);
+        Loading.setCanceledOnTouchOutside(false);
+        Loading.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        Loading.setMessage("방 목록을 불러오는 중입니다...");
 
-        for(int i=0; i<10; i++){
-            System.out.println(rooms.get(i).toString());
-        }
+        refresh();
 
     }
 
-    public void add(){
-        // room 추가, 추가해서 서버에 알리고 room # 받아옴
+    public static void refreshRoom(ArrayList<Room> data){
+        rooms.clear();
+        rooms.addAll(data);
     }
 
     public void refresh(){
-        // 서버로부터 모든 방을 받아오고 notifyDatasetChanged()
+        client.refreshRoom();
+
+        Loading.show();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(!dataChanged){}
+                Handler mHandler = new Handler(Looper.getMainLooper());
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        notifyDataSetChanged();
+                        Loading.dismiss();
+                    }
+                });
+                dataChanged = false;
+            }
+        }).start();
+//
+//        Timer timer = new Timer();
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//                Handler mHandler = new Handler(Looper.getMainLooper());
+//                mHandler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        notifyDataSetChanged();
+//                        Loading.dismiss();
+//                    }
+//                });
+//            }
+//        };
+//        // 1.5초뒤 실행 (다이얼로그 띄워주면 좋겠다)
+//        timer.schedule(task, 1500);
     }
 
     @Override
@@ -80,6 +123,7 @@ public class BaseAdapter_Room extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.roomName = (TextView) itemLayout.findViewById(R.id.roomName);
             viewHolder.roomNum = (TextView) itemLayout.findViewById(R.id.roomNum);
+            viewHolder.playerNum = (TextView) itemLayout.findViewById(R.id.playerNum);
 
             itemLayout.setTag(viewHolder);
         }
@@ -89,6 +133,7 @@ public class BaseAdapter_Room extends BaseAdapter {
 
         viewHolder.roomNum.setText(rooms.get(position).num);
         viewHolder.roomName.setText(rooms.get(position).name);
+        viewHolder.playerNum.setText(rooms.get(position).numOfPlayer);
 
         return itemLayout;
 

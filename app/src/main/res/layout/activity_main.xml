@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".MainActivity"
-    android:id="@+id/parent_layout"
     android:background="#ffffff"
     android:orientation="vertical">
 
@@ -31,52 +30,60 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="top|right"
+            android:gravity="center_vertical|right"
             android:orientation="horizontal">
 
             <Button android:id="@+id/enemywall01"
+                android:tag="enemywall01"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="2dp"
                 android:background="@color/wall_blue"/>
 
             <Button android:id="@+id/enemywall02"
+                android:tag="enemywall02"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="2dp"
                 android:background="@color/wall_blue"/>
 
             <Button android:id="@+id/enemywall03"
+                android:tag="enemywall03"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="2dp"
                 android:background="@color/wall_blue"/>
 
             <Button android:id="@+id/enemywall04"
+                android:tag="enemywall04"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="2dp"
                 android:background="@color/wall_blue"/>
 
             <Button android:id="@+id/enemywall05"
+                android:tag="enemywall05"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="2dp"
                 android:background="@color/wall_blue"/>
 
             <Button android:id="@+id/enemywall06"
+                android:tag="enemywall06"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="2dp"
                 android:background="@color/wall_blue"/>
 
             <Button android:id="@+id/enemywall07"
+                android:tag="enemywall07"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="2dp"
                 android:background="@color/wall_blue"/>
 
             <Button android:id="@+id/enemywall08"
+                android:tag="enemywall08"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:background="@color/wall_blue"/>
@@ -100,6 +107,7 @@
 
 
         <LinearLayout
+            android:id="@+id/parent_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -114,7 +122,6 @@
                 android:orientation="horizontal">
 
                 <Button android:tag="block00"
-                    android:id="@+id/block00"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:onClick="onClickBlock"
@@ -1862,6 +1869,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/player_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Player 2"
@@ -1876,48 +1884,56 @@
                 android:orientation="horizontal">
 
                 <Button android:id="@+id/mywall01"
+                    android:tag="mywall01"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginRight="2dp"
                     android:background="@color/wall_red"/>
 
                 <Button android:id="@+id/mywall02"
+                    android:tag="mywall02"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginRight="2dp"
                     android:background="@color/wall_red"/>
 
                 <Button android:id="@+id/mywall03"
+                    android:tag="mywall03"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginRight="2dp"
                     android:background="@color/wall_red"/>
 
                 <Button android:id="@+id/mywall04"
+                    android:tag="mywall04"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginRight="2dp"
                     android:background="@color/wall_red"/>
 
                 <Button android:id="@+id/mywall05"
+                    android:tag="mywall05"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginRight="2dp"
                     android:background="@color/wall_red"/>
 
                 <Button android:id="@+id/mywall06"
+                    android:tag="mywall06"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginRight="2dp"
                     android:background="@color/wall_red"/>
 
                 <Button android:id="@+id/mywall07"
+                    android:tag="mywall07"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginRight="2dp"
                     android:background="@color/wall_red"/>
 
                 <Button android:id="@+id/mywall08"
+                    android:tag="mywall08"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:background="@color/wall_red"/>
@@ -1931,18 +1947,21 @@
                 android:orientation="horizontal">
 
                 <Button android:id="@+id/myitem01"
+                    android:tag="myitem01"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginRight="10dp"
                     android:background="@color/item_slot"/>
 
                 <Button android:id="@+id/myitem02"
+                    android:tag="myitem02"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginRight="10dp"
                     android:background="@color/item_slot"/>
 
                 <Button android:id="@+id/myitem03"
+                    android:tag="myitem03"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@color/item_slot"/>
@@ -1961,7 +1980,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -1985,18 +2005,21 @@
                 android:layout_height="wrap_content">
 
                 <Button android:tag="btn_move"
+                    android:id="@+id/btn_move"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="8dp"
                     android:background="@drawable/btn_move_red"/>
 
                 <Button android:tag="btn_wall"
+                    android:id="@+id/btn_wall"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="8dp"
                     android:background="@drawable/btn_wall_red"/>
 
                 <Button android:tag="btn_item"
+                    android:id="@+id/btn_item"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/btn_item_red"/>

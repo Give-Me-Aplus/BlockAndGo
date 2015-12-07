@@ -1,10 +1,12 @@
 package com.givemeaplus.bag.blockandgo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -34,26 +36,49 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         backKeyPressedTime = 0;
         toast = new Toast(this);
 
-        //connection = Client.getInstance();
+        connection = Client.getInstance(this);
 
         text = (EditText)findViewById(R.id.edit_name);
         enter = (Button)findViewById(R.id.btn_enter);
         enter.setOnClickListener(this);
+
+
+        text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(text.getWindowToken(), 0);
+                }
+            }
+        });
+
+
 
     }
 
     @Override
     public void onClick(View v) {
 
-
         String name = text.getText().toString().trim();
-        //connection.sendName(name);
 
-        myPlayer.setName(name); // 바로정하는게 아니라 Client sendname으로 true/false 체크해줘야함
+        if(name.compareTo("")==0){
+            Toast.makeText(getApplicationContext(), "Put your nickname!", Toast.LENGTH_SHORT).show();
+        }
+        else if(name.contains("#")){
+            Toast.makeText(getApplicationContext(), "Cannot use '#' in nickname", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            connection.sendName(name);
 
-        Intent intent = new Intent(LoginActivity.this, WaitingRoomActivity.class);
-        startActivity(intent);
+            myPlayer.setName(name);
+
+            Intent intent = new Intent(LoginActivity.this, WaitingRoomActivity.class);
+            startActivity(intent);
+        }
     }
+
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

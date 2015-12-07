@@ -8,4 +8,5 @@ import android.widget.TextView;
 public class ViewHolder {
     TextView roomNum;
     TextView roomName;
+    TextView playerNum;
 }
