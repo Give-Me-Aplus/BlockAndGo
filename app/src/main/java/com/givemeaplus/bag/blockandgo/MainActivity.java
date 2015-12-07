@@ -283,6 +283,9 @@ public class MainActivity extends Activity {
         delete_vi = -1;
         delete_vj = -1;
 
+        player1Name.setText(myPlayer.getEnemyName());
+        player2Name.setText(myPlayer.getName());
+
         if(myPlayer.getType()==1){
             for(int i=0; i<7; i++){
                 blockArr[10][i].setBackgroundColor(getResources().getColor(R.color.block_red));
@@ -344,7 +347,7 @@ public class MainActivity extends Activity {
                 while(true){
                     if(startCountDown) {
 
-                        timer.schedule(task, 1000, 31);
+                        timer.schedule(task, 500, 1000);
 
                         if (isMyTurn) {
                             mHandler.post(new Runnable() {
